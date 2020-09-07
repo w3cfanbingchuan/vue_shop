@@ -24,9 +24,10 @@ export default {
   data() {
     return {
       loginForm: {
-        username: 'fbc',
-        password: '124788'
+        username: 'admin',
+        password: '123456'
       },
+      input2: '',
       loginRules: {
         username: [
           { required: true, message: '请输入登录名称', trigger: 'blur' },
@@ -34,7 +35,7 @@ export default {
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 6, max: 15, message: '长度在 6 到 15 个字符', trigger: 'blur' }
+          { min: 4, max: 15, message: '长度在 4 到 15 个字符', trigger: 'blur' }
         ]
       }
     }
@@ -48,9 +49,9 @@ export default {
         if (!vaild) {
           return
         }
-        // const { data: res } = await this.$http.post('login', this.loginForm)
-        // if (res.meta.status !== 200) return this.$message.error('登陆失败')
-        sessionStorage.setItem('token', '1111111111')
+        const { data: res } = await this.$http.post('login', this.loginForm)
+        if (res.meta.status !== 200) return this.$message.error('登陆失败')
+        sessionStorage.setItem('token', res.data.token)
         this.$message.success('成功')
         this.$router.push('/home')
       })
