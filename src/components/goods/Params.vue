@@ -21,8 +21,7 @@
             type="primary"
             :disabled="istrue"
             size="mini"
-            @click="dialogVisible = true"
-          >添加属性</el-button>
+            @click="dialogVisible = true">添加属性</el-button>
           <el-table :data="tableData" border style="width: 100%">
             <el-table-column type="expand"></el-table-column>
             <el-table-column type="index" label="#"></el-table-column>
@@ -67,7 +66,6 @@
         <el-button type="primary" @click="addCate">确 定</el-button>
       </span>
     </el-dialog>
-    <!-- 修改参数 -->
     <el-dialog :title="'修改'+ diaTitle" :visible.sync="editDialogVisible" width="50%" @close="resetForm">
       <el-form :model="editForm" :rules="editRules" ref="editForm">
         <el-form-item :label="diaTitle" prop="attr_name">
